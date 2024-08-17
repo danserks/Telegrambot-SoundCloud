@@ -2,7 +2,7 @@ import telebot
 import subprocess
 import os
 
-API_TOKEN = '6260106956:AAEDlU_kY2TgkbV0o7ml-yGmGITewxQMPzc'
+API_TOKEN = 'putyourthing👻'
 bot = telebot.TeleBot(API_TOKEN)
 
 # Directory to save the downloaded soundtracks
