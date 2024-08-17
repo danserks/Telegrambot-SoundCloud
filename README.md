@@ -1,2 +1,2 @@
-# Telegrambot-SoundCloud
-SoundCloud downloader using python
+[!NOTE]
+this for only education pruposes
