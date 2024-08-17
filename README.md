@@ -1,2 +1,3 @@
-[!NOTE]
-this for only education pruposes
+> [!NOTE]
+> this for only education pruposes
+
