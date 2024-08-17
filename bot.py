@@ -2,7 +2,7 @@ import telebot
 import subprocess
 import os
 
-API_TOKEN = 'putyourthing👻'
+API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
 bot = telebot.TeleBot(API_TOKEN)
 
 # Directory to save the downloaded soundtracks
@@ -19,24 +19,21 @@ def send_welcome(message):
 def download_soundcloud_track(message):
     soundcloud_url = message.text.strip()
     
-    bot.reply_to(message, "Downloading your track... Please wait.")
+    bot.reply_to(message, "Downloading your track or playlist... Please wait.")
     
-    # Use scdl to download the track
+    # Use scdl to download the track or playlist
     download_command = f"scdl -l {soundcloud_url} -o {DOWNLOAD_DIRECTORY}"
     try:
         subprocess.run(download_command, shell=True, check=True)
 
-        # Find the downloaded file
-        downloaded_files = [f for f in os.listdir(DOWNLOAD_DIRECTORY) if os.path.isfile(os.path.join(DOWNLOAD_DIRECTORY, f))]
+        # Find the downloaded files
+        downloaded_files = [os.path.join(DOWNLOAD_DIRECTORY, f) for f in os.listdir(DOWNLOAD_DIRECTORY) if os.path.isfile(os.path.join(DOWNLOAD_DIRECTORY, f))]
         if downloaded_files:
-            file_path = os.path.join(DOWNLOAD_DIRECTORY, downloaded_files[0])
-            
-            # Send the file to the user
-            with open(file_path, 'rb') as track:
-                bot.send_audio(message.chat.id, track)
-            
-            # Clean up the downloaded file
-            os.remove(file_path)
+            for file_path in downloaded_files:
+                with open(file_path, 'rb') as track:
+                    bot.send_audio(message.chat.id, track)
+                # Clean up the downloaded file
+                os.remove(file_path)
         else:
             bot.reply_to(message, "Failed to download the track. Please check the URL and try again.")
     except subprocess.CalledProcessError:
