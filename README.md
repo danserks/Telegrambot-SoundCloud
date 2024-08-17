@@ -3,11 +3,6 @@
 
 
 #  Requirements!
-> [!WARNING]
-> This bot uses
-> "scdl" for downloading
-> "PytelegramBotAPI" for running the bot.
-
 ```bash
 pip install pyTelegramBotAPI scdl
 ```
