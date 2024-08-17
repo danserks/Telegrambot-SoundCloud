@@ -3,7 +3,7 @@
 
 
 # How To use & Requirements!
-> This bot uses <br>
+<h3> This bot uses</h3>  <br>
 > python <br>
 > "scdl" for downloading <br>
 > "PytelegramBotAPI" for running the bot.
